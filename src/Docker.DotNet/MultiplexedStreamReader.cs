@@ -14,24 +14,25 @@ namespace Docker.DotNet
             _stream = stream;
         }
 
-        public async Task<string> ReadLineAsync(CancellationToken token = default)
+        public async Task<string> ReadLineAsync(CancellationToken cancellationToken)
         {
+            
             var line = new List<byte>();
 
             var buffer = new byte[1];
 
-            while (true)
+            while (!cancellationToken.IsCancellationRequested)
             {
-                var res = await _stream.ReadOutputAsync(buffer, 0, 1, token);
+                var res = await _stream.ReadOutputAsync(buffer, 0, 1, cancellationToken);
 
                 if (res.Count == 0)
                 {
-                    continue;
+                    return null;
                 }
 
                 else if (buffer[0] == '\n')
                 {
-                    return Encoding.UTF8.GetString(line.ToArray());
+                    break;
                 }
 
                 else
@@ -39,6 +40,8 @@ namespace Docker.DotNet
                     line.Add(buffer[0]);
                 }
             }
+
+            return Encoding.UTF8.GetString(line.ToArray());
         }
     }
 }
