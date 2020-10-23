@@ -54,5 +54,21 @@ namespace Docker.DotNet
 
             return this._client.MakeRequestAsync(this._client.NoErrorHandlers, HttpMethod.Delete, $"secrets/{id}", cancellationToken);
         }
+
+        Task ISecretsOperations.UpdateAsync(string id, Int64 version, SecretSpec body, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            if (body == null)
+            {
+                throw new ArgumentNullException(nameof(body));
+            }
+
+            var data = new JsonRequestContent<SecretSpec>(body, this._client.JsonSerializer);
+            return this._client.MakeRequestAsync(this._client.NoErrorHandlers, HttpMethod.Post, $"secrets/{id}/update?version={version}", null, data, cancellationToken);
+        }
     }
 }

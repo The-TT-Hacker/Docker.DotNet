@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -49,5 +50,17 @@ namespace Docker.DotNet
         /// </remarks>
         /// <param name="id">ID of the secret.</param>
         Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Delete a secret
+        /// </summary>
+        /// <remarks>
+        /// 204 - No error.
+        /// 404 - Secret not found.
+        /// 500 - Server error.
+        /// 503 - Node is not part of the swarm
+        /// </remarks>
+        /// <param name="id">ID or name of the secret.</param>
+        Task UpdateAsync(string id, Int64 version, SecretSpec body, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
