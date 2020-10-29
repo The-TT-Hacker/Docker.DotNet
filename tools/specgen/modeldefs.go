@@ -389,6 +389,18 @@ type SecretCreateResponse struct {
 	ID string
 }
 
+// SwarmConfig represents a config.
+type SwarmConfig struct {
+	ID string
+	swarm.Meta
+	Spec swarm.ConfigSpec
+}
+
+// ConfigCreateResponse for POST /configs/create
+type ConfigCreateResponse struct {
+	ID string
+}
+
 // TasksListParameters for GET /tasks
 type TasksListParameters struct {
 	Filters Args `rest:"query"`

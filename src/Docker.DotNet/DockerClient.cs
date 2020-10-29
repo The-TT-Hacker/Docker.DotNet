@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
@@ -39,6 +39,7 @@ namespace Docker.DotNet
             System = new SystemOperations(this);
             Networks = new NetworkOperations(this);
             Secrets = new SecretsOperations(this);
+            Configs = new ConfigsOperations(this);
             Swarm = new SwarmOperations(this);
             Tasks = new TasksOperations(this);
             Volumes = new VolumeOperations(this);
@@ -138,6 +139,8 @@ namespace Docker.DotNet
         public IVolumeOperations Volumes { get; }
 
         public ISecretsOperations Secrets { get; }
+
+        public IConfigsOperations Configs { get; }
 
         public ISwarmOperations Swarm { get; }
 

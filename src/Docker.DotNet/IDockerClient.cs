@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Docker.DotNet
 {
@@ -19,6 +19,8 @@ namespace Docker.DotNet
         IVolumeOperations Volumes { get; }
 
         ISecretsOperations Secrets { get; }
+
+        IConfigsOperations Configs { get; }
 
         ISwarmOperations Swarm { get; }
 

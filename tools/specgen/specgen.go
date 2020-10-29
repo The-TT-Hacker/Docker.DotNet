@@ -424,6 +424,17 @@ var dockerTypesToReflect = []reflect.Type{
 	// POST /secrets/create
 	reflect.TypeOf(SecretCreateResponse{}),
 
+	//
+	// Configs API (swarm)
+	//
+
+	// GET /configs
+	// GET /configs/(id)
+	reflect.TypeOf(SwarmConfig{}),
+
+	// POST /configs/create
+	reflect.TypeOf(ConfigCreateResponse{}),
+
 	// GET /services
 	// GET /services/(id)
 	reflect.TypeOf(swarm.Service{}),
