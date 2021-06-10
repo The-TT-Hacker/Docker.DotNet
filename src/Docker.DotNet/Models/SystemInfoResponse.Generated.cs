@@ -93,6 +93,9 @@ namespace Docker.DotNet.Models
         [DataMember(Name = "CgroupDriver", EmitDefaultValue = false)]
         public string CgroupDriver { get; set; }
 
+        [DataMember(Name = "CgroupVersion", EmitDefaultValue = false)]
+        public string CgroupVersion { get; set; }
+
         [DataMember(Name = "NEventsListener", EmitDefaultValue = false)]
         public long NEventsListener { get; set; }
 
@@ -101,6 +104,9 @@ namespace Docker.DotNet.Models
 
         [DataMember(Name = "OperatingSystem", EmitDefaultValue = false)]
         public string OperatingSystem { get; set; }
+
+        [DataMember(Name = "OSVersion", EmitDefaultValue = false)]
+        public string OSVersion { get; set; }
 
         [DataMember(Name = "OSType", EmitDefaultValue = false)]
         public string OSType { get; set; }
@@ -185,6 +191,9 @@ namespace Docker.DotNet.Models
 
         [DataMember(Name = "ProductLicense", EmitDefaultValue = false)]
         public string ProductLicense { get; set; }
+
+        [DataMember(Name = "DefaultAddressPools", EmitDefaultValue = false)]
+        public IList<NetworkAddressPool> DefaultAddressPools { get; set; }
 
         [DataMember(Name = "Warnings", EmitDefaultValue = false)]
         public IList<string> Warnings { get; set; }

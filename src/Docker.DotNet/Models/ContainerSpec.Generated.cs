@@ -77,5 +77,14 @@ namespace Docker.DotNet.Models
 
         [DataMember(Name = "Sysctls", EmitDefaultValue = false)]
         public IDictionary<string, string> Sysctls { get; set; }
+
+        [DataMember(Name = "CapabilityAdd", EmitDefaultValue = false)]
+        public IList<string> CapabilityAdd { get; set; }
+
+        [DataMember(Name = "CapabilityDrop", EmitDefaultValue = false)]
+        public IList<string> CapabilityDrop { get; set; }
+
+        [DataMember(Name = "Ulimits", EmitDefaultValue = false)]
+        public IList<Ulimit> Ulimits { get; set; }
     }
 }
